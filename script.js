@@ -26,12 +26,11 @@ function editText(e){
     }
 }
 function setUpNewItemLinks(e){
-    var newItem = prompt("New Item:");
-    var link = $(e.target);
+    var newItem = $('.putin[data-list=' + e + ']').val();
     if(newItem != null){
         var taggedItem = newItem.replace(/(#[^\W]+)/g,'<em>$1</em>');
-        $('<li task="temp"><input type="checkbox"> <span>'+taggedItem+'</span></li>').appendTo("ul[list='"+link.attr('list')+"']");
-        $.post('action.php', { "insert": newItem, "list": link.attr('list') }, 
+        $('<li task="temp"><input type="checkbox"> <span>'+taggedItem+'</span></li>').appendTo("ul[list='"+e+"']");
+        $.post('action.php', { "insert": newItem, "list": e }, 
         function(data){
             var temp = $("li[task='temp']");
             addItemEvents(0,temp);
@@ -84,9 +83,19 @@ function archiveItems(e){
 }
 $(document).ready(function(){
     $("li").each(addItemEvents);
-    $("a.newitem").click(setUpNewItemLinks);
     $("h1").click(setUpEditListTitle);
     $("a.newlist").click(setUpNewList);
     $(".archive").click(setUpArchiveList);
     $('.archiveDone').click(archiveItems);
+})
+
+$(document).ready(function(){
+    $('.putin').keyup(function() {
+        var k = $(this).attr('data-list');
+        if (event.which == 13) {
+            setUpNewItemLinks(k);
+            $(this).val("");
+        }
+    });
+    $(".putin").before("<i class='plus'>+</i>");
 })

@@ -3,22 +3,21 @@
     padding: 0;
 }
 body {
-    font: 14px/20px helvetica,verdana;
+    font: 13px/20px georgia,serif;
     background: #fff;
-    text-align: center;
+    color: #000;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 .wrapper {
     margin: 0 auto;
     text-align: left;
-    width: 300px;
+    width: auto;
+    padding: 30px 0 100px 100px;
 }
 h1 {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-                 "Helvetica Neue", sans-serif;
-    font-weight: 300;
-    font-size: 40px;
-    line-height: 50px;
-    margin: 30px 0 0 0;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 30px 0 5px 0;
 }
 .actions .archive {
     cursor: pointer;
@@ -30,32 +29,84 @@ ul {
     list-style: none;
 }
 li {
-    padding: 3px;
+    padding: 4px 3px 3px 0;
 }
-li:hover, h1:hover {
-    background: #FFFF7F;
+li span:hover, h1:hover {
+    cursor: pointer;
 }
 .done {
-    color: #999;
+    color: #B2B2B2;
     text-decoration: line-through;
 }
 input {
     vertical-align: middle;
 }
-.globalactions {
-	display: block;
-	text-align: right;
-	padding-top: 1em;
-}
 .actions {
-	font-size: .8em;
-	color: #999;
+	color: #B2B2B2;
+    display: none;
+    margin-top: 15px;
 }
-a {
-	font-size: 10px;
-	color: #999;
+a, span.archive {
+	font-size: 12px;
+	color: #B2B2B2;
+    font-family: "Helvetica Neue", helvetica, sans-serif;
 	text-decoration: none;
+    font-style: normal;
 }
 em {
-    color: #008000;
+    color: #ffff00;
+}
+ul li span {
+    margin-left: 5px;
+    vertical-align: middle;
+}
+header {
+    background: #000;
+    color: #fff;
+    height: 55px;
+    width: 100%;
+    padding: 0 100px;
+    box-sizing: border-box;
+}
+header a {
+    display: inline-block;
+    margin-right: 30px;
+    font-size: 15px;
+    color: #555;
+    line-height: 55px;
+}
+.newlist {
+    color: #fff;
+}
+.logo {
+    float: right;
+    line-height: 55px;
+    font-family: optima;
+    font-size: 20px;
+    font-style: normal;
+}
+section {
+    float: left;
+    width: 255px;
+    margin-right: 70px;
+    padding-bottom: 50px;
+}
+section:hover > .actions {
+    display: block;
+}
+input[type="text"] {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #E0E0E0;
+    padding: 7px 0 7px 12px;
+    margin: 5px 0 20px 0;
+    font: 13px "Helvetica Neue", helvetica, sans-serif;
+}
+.plus{
+    color: #B2B2B2;
+    position: absolute;
+    margin-top: 10px;
+}
+input[type="text"]:focus {
+    outline: none;
 }

@@ -1,8 +1,8 @@
 <?php
 
-$db_user = 'user';
-$db_pass = 'pass';
+$db_user = 'root';
+$db_pass = 'root';
 $db_host = 'localhost';
-$db_database = 'database';
+$db_database = 'todo';
 
 ?>

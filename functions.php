@@ -23,17 +23,18 @@ function printLists(){
     $lists = getLists();
     $out = '';
     foreach($lists as $ListID => $list){
-        $out .= '<h1 list="'.$ListID.'">'.$list['Title'].'</h1>'."\n";
-        $out .= '<ul list="'.$ListID.'">'."\n";
+        $out .= '<section list="'.$ListID.'"><h1 list="'.$ListID.'">'.$list['Title'].'</h1>'."\n";
+        $out .= '<input type="text" class="putin" data-list="'.$ListID.'"><ul list="'.$ListID.'">'."\n";
         if(count($list['Tasks']))
             foreach($list['Tasks'] as $task){
                 $checked = $task['Done'] ? ' checked="checked"' : '';
                 $class = $task['Done'] ? ' class="done"' : '';
                 $text = preg_replace('/(@[^\W]+)/','<em>\1</em>', $task['Text']);
+                $text = utf8_decode($text);
                 $out .= "\t".'<li task="'.$task['TaskID'].'"><input type="checkbox"'.$checked.'> <span'.$class.'>'.$text.'</span></li>'."\n";
             }
         $out .= '</ul>'."\n".
-            '<p class="actions" list="'.$ListID.'"><a class="newitem" list="'.$ListID.'" href="#">new item</a> - <a class="archiveDone" href="./action.php?archive='.$ListID.'">archive done</a> - <span class="archive">archive entire list</span></p>'."\n\n";
+            '<p class="actions" list="'.$ListID.'"><span class="archive">Delete List</span> | <a class="archiveDone" href="./action.php?archive='.$ListID.'">Clear List</a></p></section>'."\n\n";
     }
     print $out;
 }
